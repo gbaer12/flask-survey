@@ -7,15 +7,17 @@ Question # {{ question_num }}
 {% block content %}
 <h1>{{ question.question }}</h1>
 
-<form action="/answer" method = 'POST'>
+<form action="/answer" method = 'POST' id="answers">
     {% for choice in question.choices %}
-        <p><input type="radio" name="answer" value="{{ choice }}">{{ choice }}</p>
+        <p><input type="radio" name="answer" value="{{ choice }}" checked>{{ choice }}</p>
     {% endfor %}
 
     {% if question.allow_text %}
     <textarea name="text"></textarea>
     {% endif %}
-    
-    <button>Continue</button>
+
+    <button type="submit">Continue</button>
 </form>
+
+<pre id="log"></pre>
 {% endblock %}

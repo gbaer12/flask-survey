@@ -51,18 +51,17 @@ def handle_question():
     choice = request.form['answer']
     text = request.form.get('text', '')
 
-    if (choice is None):
-        return redirect(f'/questions/{len(responses)}')
+    if not choice:
+        return "Please provide an answer."
 
-    else:
-        # add this response to the session
-        responses = session[RESPONSE_KEY]
-        responses.append({'choice': choice, 'text': text})
+    # add this response to the session
+    responses = session[RESPONSE_KEY]
+    responses.append({'choice': choice, 'text': text})
     
-        # add this response to the session
-        session[RESPONSE_KEY] = responses
-        survey_code = session   [CURRENT_SURVEY_KEY]
-        survey = surveys[survey_code]
+    # add this response to the session
+    session[RESPONSE_KEY] = responses
+    survey_code = session   [CURRENT_SURVEY_KEY]
+    survey = surveys[survey_code]
 
     if (len(responses) == len(survey.questions)):
         # They've answered all the questions.
