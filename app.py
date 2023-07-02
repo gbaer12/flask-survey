@@ -51,9 +51,6 @@ def handle_question():
     choice = request.form['answer']
     text = request.form.get('text', '')
 
-    if not choice:
-        return "Please provide an answer."
-
     # add this response to the session
     responses = session[RESPONSE_KEY]
     responses.append({'choice': choice, 'text': text})

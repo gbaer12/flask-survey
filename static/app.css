@@ -1,0 +1,17 @@
+body {
+    background-color: bisque;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    text-align: center;
+}
+
+.img-raccoon {
+    width: auto;
+    height: auto;
+}
